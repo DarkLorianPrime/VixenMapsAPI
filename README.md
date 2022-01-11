@@ -20,10 +20,15 @@ ____
 ____
 Логины и пароли:
 mysql base (FREE) 
+
 host: remotemysql.com
+
 db: u6FqJ4w7Z2
+
 user: u6FqJ4w7Z2
+
 password: CMtzRCPvZD
+
 Можете заменить двоеточие на = и вставлять в .env, хе-хе.
 ____
 Как запускать проект:
