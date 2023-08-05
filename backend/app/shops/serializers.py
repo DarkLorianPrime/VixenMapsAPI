@@ -34,7 +34,7 @@ class ShopSerializer(ModelSerializer):
 
     def validate(self, attrs):
         if shop_repository.is_shop_exists(**attrs):
-            raise ValidationError({"name": "this shopname already exists in this house"}, 409)
+            raise ValidationError({"name": "this shopname already exists in this house"}, 400)
 
         return attrs
 

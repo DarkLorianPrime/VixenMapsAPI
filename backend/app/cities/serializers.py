@@ -19,7 +19,7 @@ class CitySerializer(ModelSerializer):
 
     def validate_name(self, name):
         if city_repository.is_city_exists(name=name):
-            raise ValidationError('this city already exists', code=409)
+            raise ValidationError('this city already exists')
 
         return name
 
@@ -35,10 +35,12 @@ class StreetSerializer(ModelSerializer):
 
     def validate_city(self, _):
         city_id = self.context["view"].kwargs["city_id"]
+        if not city_repository.get_city(city_id=city_id):
+            raise ValidationError("this city_id not found")
         return city_repository.get_city(city_id=city_id)
 
     def validate(self, attrs):
         if street_repository.is_street_exists(**attrs):  # name, city
-            raise ValidationError({"name": "this street in this city already exists"}, code=409)
+            raise ValidationError({"name": "this street in this city already exists"})
 
         return attrs

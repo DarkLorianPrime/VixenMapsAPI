@@ -11,6 +11,6 @@ class ShopRepository:
     def is_shop_exists(self, city, street, house, name, **_):
         return self.model.objects.filter(city=city, street=street, house=house, name=name).exists()
 
-    def is_shop_opened(self, close_time, open_time, current_time):
-        return ((close_time < open_time and (open_time <= current_time or close_time >= current_time))
-                or (open_time <= current_time <= close_time))
+    # def is_shop_opened(self, close_time, open_time, current_time):
+    #     return ((close_time < open_time and (open_time <= current_time or close_time >= current_time))
+    #             or (open_time <= current_time <= close_time))
