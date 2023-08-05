@@ -24,6 +24,7 @@ class StreetViewSet(ModelViewSet):
     def get_serializer(self, *args, **kwargs):
         if kwargs.get('data') is None:
             return self.serializer_class(*args, **kwargs)
+
         data = kwargs['data'].dict()
         data['city'] = self.kwargs.get('city_id')
         kwargs['data'] = data
